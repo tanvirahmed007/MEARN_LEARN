@@ -23,3 +23,27 @@ function showcomment(json){
     }
 
 }
+
+
+function commentData(){
+    fetch('https://jsonplaceholder.typicode.com/comments')
+    .then(response => response.json())
+    .then(json => showcommentData(json))
+}
+commentData();
+
+function showcommentData(commentsData){
+    const sectionContainer = document.getElementById('datas');
+    for(const comment of commentsData){
+        const div = document.createElement('div');
+        div.innerHTML = `
+        
+        <h3>${comment.name}</h3>
+        <p>${comment.email}</p>
+        <p>${comment.body}</p>
+
+        `;
+        sectionContainer.appendChild(div);
+    }
+
+}
